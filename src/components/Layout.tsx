@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { formatPrice } from "../lib/money";
 import { useCart } from "../context/CartContext";
 import { CartDrawer } from "./CartDrawer";
 
@@ -12,7 +13,7 @@ const links = [
 
 export function Layout() {
   const { pathname } = useLocation();
-  const { count, openCart, toast } = useCart();
+  const { count, openCart, toast, isOpen, subtotal } = useCart();
   const [solid, setSolid] = useState(pathname !== "/");
   const [menu, setMenu] = useState(false);
   const [booting, setBooting] = useState(true);
@@ -47,7 +48,7 @@ export function Layout() {
       <div className={`preloader${booting ? "" : " is-done"}`} aria-hidden={!booting}>
         <div className="preloader-mark">
           <span>Maison</span>
-          <strong>Exotique Center</strong>
+          <strong>Exotic Center</strong>
           <div className="preloader-bar">
             <i />
           </div>
@@ -57,7 +58,7 @@ export function Layout() {
       <header className={`site-header${solid ? " is-solid" : ""}`}>
         <Link className="brand" to="/">
           <small>Maison</small>
-          <strong>Exotique Center</strong>
+          <strong>Exotic Center</strong>
         </Link>
         <nav className="nav-links" aria-label="Principal">
           {links.map((l) => (
@@ -97,7 +98,7 @@ export function Layout() {
       <footer className="site-footer">
         <div className="footer-grid">
           <div>
-            <p className="footer-brand">Exotique Center</p>
+            <p className="footer-brand">Exotic Center</p>
             <p className="lede" style={{ marginTop: 16, color: "rgba(246,240,230,0.7)" }}>
               Épicerie et cosmétique. Des matières d'Afrique, choisies pour la table et le soin — sans folklore, avec exigence.
             </p>
@@ -122,18 +123,26 @@ export function Layout() {
           <div>
             <p className="footer-label">Écrire</p>
             <div className="footer-nav">
-              <span>bonjour@exotiquecenter.fr</span>
+              <span>bonjour@exoticcenter.fr</span>
               <span>Maquette front — Shopify headless</span>
             </div>
           </div>
         </div>
         <div className="footer-base">
-          <span>© {new Date().getFullYear()} Exotique Center</span>
+          <span>© {new Date().getFullYear()} Exotic Center</span>
           <span>Maquette de validation</span>
         </div>
       </footer>
 
       <CartDrawer />
+      {count > 0 && !isOpen && (
+        <button className="cart-dock" type="button" onClick={openCart}>
+          Voir le panier
+          <span>
+            {count} · {formatPrice(subtotal)}
+          </span>
+        </button>
+      )}
       <div className={`toast${toast ? " is-on" : ""}`} role="status">
         {toast}
       </div>

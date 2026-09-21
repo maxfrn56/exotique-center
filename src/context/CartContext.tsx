@@ -18,8 +18,8 @@ type CartContextValue = {
   toast: string;
   openCart: () => void;
   closeCart: () => void;
-  addVariant: (productHandle: string, variantId: string, quantity?: number) => void;
-  addPack: (packHandle: string) => void;
+  addVariant: (productHandle: string, variantId: string, quantity?: number, options?: { open?: boolean }) => void;
+  addPack: (packHandle: string, options?: { open?: boolean }) => void;
   setQuantity: (key: string, quantity: number) => void;
   remove: (key: string) => void;
   removePackInstance: (packInstanceId: string) => void;
@@ -37,7 +37,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
     window.setTimeout(() => setToast(""), 2400);
   };
 
-  const addVariant = useCallback((productHandle: string, variantId: string, quantity = 1) => {
+  const addVariant = useCallback(
+    (productHandle: string, variantId: string, quantity = 1, options?: { open?: boolean }) => {
     const product = getProduct(productHandle);
     const variant = product?.variants.find((v) => v.id === variantId);
     if (!product || !variant) return;
@@ -63,11 +64,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
       };
       return [...prev, line];
     });
-    setIsOpen(true);
+    if (options?.open !== false) setIsOpen(true);
     flash(`${product.title} ajouté`);
-  }, []);
+  },
+  []);
 
-  const addPack = useCallback((packHandle: string) => {
+  const addPack = useCallback((packHandle: string, options?: { open?: boolean }) => {
     const pack = getPack(packHandle);
     if (!pack) return;
     const instanceId = uid("pack");
@@ -89,7 +91,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         packInstanceId: instanceId,
       })),
     ]);
-    setIsOpen(true);
+    if (options?.open !== false) setIsOpen(true);
     flash(`${pack.title} : ingrédients ajoutés`);
   }, []);
 

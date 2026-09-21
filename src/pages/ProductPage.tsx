@@ -11,11 +11,13 @@ export function ProductPage() {
   const { addVariant } = useCart();
   const [variantId, setVariantId] = useState(product?.variants[0]?.id ?? "");
   const [image, setImage] = useState(0);
+  const [qty, setQty] = useState(1);
 
   useEffect(() => {
     if (!product) return;
     setVariantId(product.variants[0].id);
     setImage(0);
+    setQty(1);
   }, [product]);
 
   const variant = useMemo(
@@ -93,7 +95,16 @@ export function ProductPage() {
           })}
 
           <div className="pdp-actions">
-            <button className="btn btn-fill" type="button" onClick={() => addVariant(product.handle, variant.id)}>
+            <div className="stepper" role="group" aria-label="Quantité">
+              <button type="button" onClick={() => setQty((n) => Math.max(1, n - 1))} aria-label="Diminuer">
+                −
+              </button>
+              <span>{qty}</span>
+              <button type="button" onClick={() => setQty((n) => n + 1)} aria-label="Augmenter">
+                +
+              </button>
+            </div>
+            <button className="btn btn-fill" type="button" onClick={() => addVariant(product.handle, variant.id, qty)}>
               Ajouter au panier
             </button>
             <Link className="btn btn-dark" to={product.productType === "epicerie" ? "/epicerie" : "/cosmetique"}>

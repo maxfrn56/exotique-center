@@ -30,7 +30,7 @@ export function HomePage() {
         <div className="hero-content">
           <p className="eyebrow">Épicerie · Cosmétique · Packs recettes</p>
           <h1>
-            Exotique
+            Exotic
             <em>Center</em>
           </h1>
           <p className="hero-lead">
@@ -67,7 +67,7 @@ export function HomePage() {
           </div>
           <div>
             <p className="lede">
-              Exotique Center ne raconte pas « l'Afrique » comme un décor. La maison vend des produits nommés, datés par leur terroir, destinés à servir — dans une casserole, dans la paume.
+              Exotic Center ne raconte pas « l'Afrique » comme un décor. La maison vend des produits nommés, datés par leur terroir, destinés à servir — dans une casserole, dans la paume.
             </p>
             <p className="lede">
               D'un côté, l'épicerie : riz brisé, pâte d'arachide, fonio, nététou, bissap. De l'autre, le soin : karité, savon noir, huiles de baobab et de moringa. Au milieu, l'idée de la cliente : des packs recettes qui composent le panier d'un seul geste.

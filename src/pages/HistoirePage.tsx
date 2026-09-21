@@ -14,13 +14,13 @@ export function HistoirePage() {
         <img src="/images/histoire-atelier.png" alt="Intérieur de la maison, étagères et lumière" />
         <div className="story-copy">
           <p>
-            Exotique Center naît d'un constat simple : trop de produits d'Afrique arrivent sans récit utile, ou trop de récits arrivent sans exigence. On veut du karité, on reçoit un souvenir. On veut un mafé, on reçoit un cliché.
+            Exotic Center naît d'un constat simple : trop de produits d'Afrique arrivent sans récit utile, ou trop de récits arrivent sans exigence. On veut du karité, on reçoit un souvenir. On veut un mafé, on reçoit un cliché.
           </p>
           <p>
             La maison tient deux comptoirs. L'épicerie, pour les bases d'une cuisine ouest-africaine tenue dans la durée. Le soin, pour des matières peu transformées — beurres, huiles, savon — destinées au quotidien, pas à l'étagère décorative.
           </p>
           <p>
-            Le nom garde le mot « exotique ». On le reprend au sérieux : ce qui vient d'ailleurs, composé ici, pour servir. Pas un safari. Pas un masque. Une liste d'ingrédients.
+            Le nom garde le mot « exotic ». On le reprend au sérieux : ce qui vient d'ailleurs, composé ici, pour servir. Pas un safari. Pas un masque. Une liste d'ingrédients.
           </p>
           <p>
             Les packs recettes sont l'invention de la cliente : un mafé, un thiéboudienne, un yassa — le garde-manger se constitue d'un clic. Le poisson, la viande, les légumes restent du frais. C'est plus honnête, et meilleur.
